@@ -1,0 +1,3 @@
+WE had used the 
+https://manage.chef.io/organizations/aasddasdsad/nodes
+for downloading starter kit and tp be used by workstation and for bootstrapping other nodes later
