@@ -1,0 +1,510 @@
+    1  clear
+    2  yum update -y
+    3  yum install wget unzip
+    4  wget https://packages.chef.io/files/stable/chefdk/3.3.23/el/7/chefdk-3.3.23-1.el7.x86_64.rpm
+    5  ls -lrt *rpm
+    6  chmod 755 *
+    7  ls -lrt
+    8  rpm -Uvh chefdk-3.3.23-1.el7.x86_64.rpm 
+    9  chef --version
+   10  pwd
+   11  cd /tmp
+   12  mkdir pra
+   13  ls -lrt
+   14  cd pra
+   15  ls
+   16  cd ..
+   17  chmod 777 pra
+   18  ls -lrt
+   19  cd pra
+   20  ls
+   21  pwd
+   22  unzip chef-starter.zip 
+   23  cd chef-repo/
+   24  ls
+   25  cd ..
+   26  mv chef-repo /root
+   27  cd /root/
+   28  ls
+   29  cd chef-repo/
+   30  ls
+   31  cd cookbooks/
+   32  ls
+   33  check generate cookbook cookbook1
+   34  chef generate cookbook cookbook1
+   35  ls -lrt
+   36  cd cookbook1
+   37  ls
+   38  ls -lrt
+   39  cd recipes/
+   40  ls
+   41  cat default.rb 
+   42  vi recipe1.rb
+   43  cat recipe1.rb 
+   44  mv recipe1.rb httpreceipe.rb
+   45  cat httpreceipe.rb 
+   46  vi httpreceipe.rb 
+   47  knife cookbook upload httpreceipe.rb 
+   48  pwd
+   49  ls
+   50  cd /root/
+   51  ls
+   52  knife cookbook upload httpreceipe.rb 
+   53  pwd
+   54  cd -
+   55  ls -lrt
+   56  pwd
+   57  knife cookbook upload cookbook1
+   58  pwd
+   59  cd /root/chef-repo/
+   60  knife cookbook upload cookbook1
+   61  pwd
+   62  ls -lrt /tmp/pra
+   63  knife bootstrap 172.31.16.187 --ssh-user ec2-user --sudo --identity-file /tmp/pra/redhat1_key.pem  -N "node1"
+   64  exit
+   65  cd /root/chef-repo/
+   66  ls
+   67  cd cookbooks/cookbook1/
+   68  clear
+   69  ls
+   70  cd recipes/
+   71  clear
+   72  ls
+   73  cat default.rb 
+   74  cat httpreceipe.rb 
+   75  vi httpreceipe.rb 
+   76  cat httpreceipe.rb 
+   77  knife cookbook upload httpreceipe.rb
+   78  knife cookbook upload cookbook1
+   79  ls -lrt
+   80  ls -lart
+   81  rm .httpreceipe.rb.swp
+   82  ls -lart
+   83  knife cookbook upload cookbook1
+   84  knife node list
+   85  pwd
+   86  knife node run_list add  node1 'recipe[cookbook1::httpreceipe]'
+   87  pwd
+   88  ls -lrt
+   89  cat httpreceipe.rb 
+   90  vi /etc/hosts
+   91  exit
+   92  ifconfig
+   93  clear
+   94  cd /tmp/pra
+   95  ls
+   96  cd /root/chef-repo/
+   97  ls
+   98  cd cookbooks/
+   99  ls
+  100  cd cookbook1/
+  101  ls
+  102  cd recipes/
+  103  ls
+  104  cat httpreceipe.rb
+  105  vi httpreceipe.rb 
+  106  vi /etc/hostname 
+  107  cd /etc/
+  108  cp hostname /root/
+  109  vi hostname 
+  110  exit
+  111  cd /root/chef-repo/
+  112  ls
+  113  cd cookbooks/cookbook1/
+  114  cd recipes/
+  115  cat httpreceipe.rb 
+  116  pwd
+  117  ls -lrt
+  118  vi httpreceipe.rb 
+  119  vi /root/chef-repo/index.html
+  120  cat httpreceipe.rb
+  121  cat /root/chef-repo/index.html
+  122  pwd
+  123  cd ../..
+  124  cd ..
+  125  pwd
+  126  cd -
+  127  cd cookbook1/recipes/
+  128  cat httpreceipe.rb 
+  129  knife cookbook upload cookbook1
+  130  pwd
+  131  cd ..
+  132  ls -lrt
+  133  mkdir files
+  134  cd files/
+  135  cp /root/chef-repo/index.html .
+  136  ls -lrt
+  137  cat index.html 
+  138  pwd
+  139  cd ../recipes/
+  140  vi httpreceipe.rb 
+  141  cat httpreceipe.rb 
+  142  knife cookbook upload cookbook1
+  143  cd /root/
+  144  ls
+  145  cd chef-repo/cookbooks/cookbook1/
+  146  cd recipes/
+  147  ls
+  148  cat httpreceipe.rb 
+  149  cd /tmp/pra
+  150  ls -lrt
+  151  pwd
+  152  cd -
+  153  ls -lrt
+  154  vi tomcatreceipe.rb
+  155  cat httpreceipe.rb 
+  156  pwd
+  157  cp /tmp/pra/benefits.war ./..
+  158  cd ..
+  159  ls
+  160  mv benefits.war ./files/
+  161  cd recipes/
+  162  ls
+  163  cat httpreceipe.rb 
+  164  vi tomcatreceipe.rb 
+  165  cat tomcatreceipe.rb 
+  166  cp tomcatreceipe.rb tomcatreceipe1.rb 
+  167  vi tomcatreceipe.rb
+  168  cd /root/chef-repo/
+  169  ls
+  170  cd cookbooks/cookbook1/recipes/
+  171  ls -lrt
+  172  cat tomcatreceipe.rb
+  173  cp tomcatreceipe.rb tomcatreceipe2.rb
+  174  vi tomcatreceipe2.rb 
+  175  knife cookbook upload cookbook1
+  176  vi tomcatreceipe2.rb 
+  177  cat tomcatreceipe2.rb 
+  178  vi tomcatreceipe2.rb 
+  179  cat tomcatreceipe2.rb 
+  180  knife cookbook upload cookbook1
+  181  cd /tmp/pra/
+  182  ls 
+  183  cp new.pem /var/tmp
+  184  knife bootstrap 172.31.23.73  --ssh-user ubuntu --sudo --identity-file /var/tmp/new.pem  -N "node2"
+  185  cd /root/chef-repo/
+  186  knife bootstrap 172.31.23.73  --ssh-user ubuntu --sudo --identity-file /var/tmp/new.pem  -N "node2"
+  187  pwd
+  188  cd cookbooks/
+  189  cd cookbook1/recipes
+  190  ls -lrt
+  191  cp tomcatreceipe2.rb mixedosrecipe.rb
+  192  vi mixedosrecipe.rb 
+  193   
+  194  knife cookbook upload cookbook1
+  195  vi mixedosrecipe.rb 
+  196  knife cookbook upload cookbook1
+  197  cd cdcd
+  198  cd /root/chef-repo/
+  199  cd cookbooks/cookbook1/recipes/
+  200  ls
+  201  vi automatetomcat.rb
+  202  cp tomcatreceipe1.rb automatetomcat.rb 
+  203  vi automatetomcat.rb 
+  204  cp tomcatreceipe.rb automatetomcat.rb 
+  205  vi automatetomcat.rb 
+  206  ls -lrt
+  207  vi mixedosrecipe.rb 
+  208  vi tomcatreceipe2.rb 
+  209  vi automatetomcat.rb 
+  210  cd /root/
+  211  ls
+  212  cd chef-repo/cookbooks/cookbook1/
+  213  cd recipes/
+  214  vi automatetomcat.rb 
+  215  cd /root/chef-repo/cookbooks/cookbook1/recipes/
+  216  cat automatetomcat.rb 
+  217  vi automatetomcat.rb 
+  218  knife upload cookbook cookbook1
+  219  cp automatetomcat.rb a.rb
+  220  vi automatetomcat.rb 
+  221  knife upload cookbook cookbook1
+  222  pwd
+  223  knife lode list
+  224  knife node list
+  225  ls -lrt
+  226  vi automatetomcat.rb 
+  227  cp mixedosrecipe.rb automatetomcat.rb 
+  228  knife upload cookbook cookbook1
+  229  knife cookbook upload coookbook1
+  230  cp a.rb automatetomcat.rb 
+  231  vi automatetomcat.rb 
+  232  knife cookbook upload vokkbook1
+  233  knife cookbook upload cokkbook1
+  234  knife cookbook upload cookbook1
+  235  vi automatetomcat.rb 
+  236  mv a.rb ..
+  237  knife cookbook upload cookbook1
+  238  vi automatetomcat.rb 
+  239  knife cookbook upload cookbook1
+  240  vi automatetomcat.rb 
+  241  ls -lrt
+  242  cp automatetomcat.rb ..
+  243  vi automatetomcat.rb 
+  244  knife cookbook upload cookbook1
+  245  vi automatetomcat.rb 
+  246  grep -r -i http *
+  247  cat tomcatreceipe2.rb
+  248  cat automatetomcat.rb 
+  249  vi automatetomcat.rb 
+  250  knife cookbook upload cookbook1
+  251  ls -lrt
+  252  mkdir ../rb
+  253  mv * ../rb
+  254  ls -lrt
+  255  cp ../rb/automatetomcat.rb .
+  256  knife cookbook upload cookbook1
+  257  vi automatetomcat.rb 
+  258  knife cookbook upload cookbook1
+  259  vi automatetomcat.rb 
+  260  knife cookbook upload cookbook1
+  261  vi automatetomcat.rb 
+  262  cat automatetomcat.rb 
+  263  echo "" > automatetomcat.rb 
+  264  knife cookbook upload cookbook1
+  265  vi automatetomcat.rb 
+  266  cp ../rb/default.rb automatetomcat.rb 
+  267  knife cookbook upload cookbook1
+  268  knife cookbook upload cookbook1 -VV
+  269  vi /root/chef-repo/.chef/knife.rb
+  270  knife cookbook upload cookbook1 -VV
+  271  pwd
+  272  ls -lrt
+  273  vi automatetomcat.rb 
+  274  cp ../rb/mixedosrecipe.rb .
+  275  ls
+  276  knife cookbook upload cookbook1 -VV
+  277  cd /root/chef-repo/cookbooks/cookbook1
+  278  knife cookbook upload cookbook1
+  279  ls
+  280  mv rv /root
+  281  mv rb /root
+  282  pwd
+  283  knife cookbook upload cookbook1
+  284  ls
+  285  mv a.rb /root/rb
+  286  knife cookbook upload cookbook1
+  287  pwd
+  288  cd recipes/
+  289  ls
+  290  vi automatetomcat.rb 
+  291  cd /root/rb
+  292  ls -lrt
+  293  cat a.rb 
+  294  pwd
+  295  cd -
+  296  cp /root/rb/a.rb ./automatetomcat.rb 
+  297  cat automatetomcat.rb
+  298  knife cookbook upload cookbook1
+  299  vi automatetomcat.rb 
+  300  knife cookbook upload cookbook1
+  301  vi automatetomcat.rb 
+  302  knife cookbook upload cookbook1
+  303  vi automatetomcat.rb 
+  304  knife cookbook upload cookbook1
+  305  vi automatetomcat.rb 
+  306  knife cookbook upload cookbook1
+  307  vi automatetomcat.rb 
+  308  knife cookbook upload cookbook1
+  309  vi automatetomcat.rb 
+  310  knife cookbook upload cookbook1
+  311  vi automatetomcat.rb 
+  312  knife cookbook upload cookbook1
+  313  vi automatetomcat.rb 
+  314  knife cookbook upload cookbook1
+  315  cat automatetomcat.rb 
+  316  vi automatetomcat.rb 
+  317  cp automatetomcat.rb automatetomcat2.rb 
+  318  vi automatetomcat2.rb 
+  319  knife cookbook upload cookbook1
+  320  cat automatetomcat2.rb 
+  321  vi automatetomcat2.rb 
+  322  clear
+  323  pwd
+  324  cat /root/rb/tomcatreceipe2.rb 
+  325  vi installtomcat.rb
+  326  vi runtomcat.rb
+  327  vi deploywar.rb
+  328  cat installtomcat.rb
+  329  cat runtomcat.rb
+  330  cat installtomcat.rb
+  331  ls
+  332  cat pwd
+  333  pwd
+  334  cat automatetomcat.rb
+  335  cat automatetomcat2.rb
+  336  vi automatetomcat2.rb 
+  337  cat automatetomcat2.rb 
+  338  vi automatetomcat2.rb 
+  339  ls -lrt
+  340  yum install tree
+  341  pwd
+  342  cd ../..
+  343  tree
+  344  pwd
+  345  cd ..
+  346  ls -lrt
+  347  cd roles/
+  348  ls
+  349  knife role list
+  350  To creaete a role
+  351  knife role create rol1
+  352  set EDITOR=vi
+  353  knife role create tomcat_role
+  354  set vi=EDITOR
+  355  knife role create tomcat_role
+  356  export EDITOR=$(which vi)
+  357  knife role create tomcat_role
+  358  which vi
+  359  pwd
+  360  knife role list
+  361  ls -lrt
+  362  pwd
+  363  knife role edit tomcat_role
+  364  knife  role list
+  365  knife role edit tomcat_role
+  366  knife  role list
+  367  knife role edit tomcat_role
+  368  to add a role to runlist
+  369  knife cookbook upload cookbook1
+  370  pwd
+  371  cd ../cookbooks/cookbook1/
+  372  ls
+  373  cd recipes/
+  374  ls
+  375  cd /tmp/pra
+  376  ls
+  377  vi ansi_key.pem
+  378  ls -lrt
+  379  knife bootstrap 18.216.229.129 --ssh-user ec2-user --sudo --identity-file `pwd` -N "kavya_node"
+  380  pwd
+  381  cd /root/chef-repo/
+  382  knife bootstrap 18.216.229.129 --ssh-user ec2-user --sudo --identity-file /tmp/pra -N "kavya_node"
+  383  knife bootstrap 18.216.229.129 --ssh-user ec2-user --sudo --identity-file /tmp/pra/ansi_key.pem -N "kavya_node"
+  384  knife node list
+  385  knife environment create dev
+  386  knife environment create test
+  387  knife environment list
+  388  knife node edit node1
+  389  knife node edit kavya_node
+  390  knife role list
+  391  knife role edit tomcat_role
+  392  edited env_run_list
+  393  edited env_run_list in tomcat_role
+  394  knife role edit tomcat_role
+  395  even though the deploy is present in genereal runlist
+  396  its not picking because its not present in environemnt runlist
+  397  knife role edit tomcat_role
+  398  aws
+  399  yum install aws-cli
+  400  pip --version
+  401  curl -O https://bootstrap.pypa.io/get-pip.py
+  402  pip --version
+  403  python get-pip.py --user
+  404  export PATH=~/.local/bin:$PATH
+  405  source ~/.bash_profile
+  406  pip --version
+  407  pip install awscli --upgrade --user
+  408  aws --version
+  409  aws configure
+  410  pwd
+  411  cd cookbooks/cookbook1
+  412  ls -lart
+  413  vi .kitchen.yml
+  414  cat .kitchen.yml 
+  415  echo "" > .kitchen.yml 
+  416  vi .kitchen.yml 
+  417  ls /tmp/pra/
+  418  pwd
+  419  ls -lart
+  420  vi .kitchen.yml 
+  421  cat .kitchen.yml 
+  422  kitchen create 
+  423  pwd
+  424  vi .kitchen
+  425  vi .kitchen.yml 
+  426  kitchen converge 
+  427  pwd
+  428  cd recipes/
+  429  cd ..
+  430  vi recipes/installtomcat.rb 
+  431  vi recipes/runtomcat.rb 
+  432  kitchen converge 
+  433  kitchen destroy
+  434  vi i /etc/hostname 
+  435  vi /etc/hostname 
+  436  yum update -y
+  437   vi  /etc/yum/pluginconf.d/subscription-manager.conf 
+  438  rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  439  yum update
+  440  yum update -y
+  441  yum install ansible
+  442  ansible --version
+  443  yum update
+  444  adduser demouser
+  445  passwd demouser
+  446  visudo
+  447  vi /etc/sudoers
+  448  cd /etc/sudoers.d
+  449  ls 
+  450  ls -lart
+  451  vi 90-cloud-init-users 
+  452  cd ..
+  453  pwd
+  454  vi /etc/ssh/sshd_config
+  455  service sshd restart
+  456  su - demouser
+  457  cat /etc/redhat-release 
+  458  clear
+  459  ssh 172.31.16.187
+  460  sudo - demouser
+  461  su - demouser
+  462  docker images
+  463  docker --version
+  464  sudo - demouser
+  465  exit
+  466  cd /root/.ansible/roles
+  467  cd /root/.ansible
+  468  ls
+  469  ls -lart
+  470  cd tmp/
+  471  ls
+  472  ls -lart
+  473  su - demouser
+  474  cd /root/.ansible/roles
+  475  pwd
+  476  ls -lrt
+  477  tree
+  478  pwd
+  479  cd /etc/ansible/
+  480  git status
+  481  git add -m .
+  482  git add .
+  483  git status
+  484  git commit -m "ansible class work files"
+  485  git config --global user.name mailtobpradeep1@gmail.com
+  486  git commit -m "ansible class work files"
+  487  git config --global user.email mailtobpradeep1@gmail.com
+  488  git config --global user.name pradeep1947
+  489  git commit -m "ansible class work files"
+  490  git push origin master
+  491  ssh-keygen
+  492  cat /root/.ssh/id_rsa.pub
+  493  ssh -T git@github.com
+  494  git push origin master
+  495  git pull
+  496  git status
+  497  git push origin master
+  498  git status
+  499  git pull origin master
+  500  pwd
+  501  ls
+  502  git status
+  503  git push origin master
+  504  vi  /etc/yum/pluginconf.d/subscription-manager.conf
+  505  clear
+  506  exit
+  507  pwd
+  508  cd /etc/ansible/
+  509  ls
+  510  history > commands_used

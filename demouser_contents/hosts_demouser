@@ -1,4 +1,4 @@
-[mygroup]
+[demogroup]
 172.31.16.187
 #[demogroup:vars]
 #  my_source=/etc/ansible/file1.txt
