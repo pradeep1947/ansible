@@ -1,0 +1,5 @@
+---
+- hosts: demogroup
+  tasks:
+  - name: example copying file for demonstrating variable concept
+    copy: src={{my_source}} dest={{my_dest}}

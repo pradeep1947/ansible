@@ -1,0 +1,8 @@
+---
+- hosts: demogroup
+  vars:
+    my_source: /etc/ansible/file1.txt
+    my_dest: /home/demouser
+  tasks:
+  - name: example copying file for demonstrating variable concept
+    copy: src={{my_source}} dest={{my_dest}}

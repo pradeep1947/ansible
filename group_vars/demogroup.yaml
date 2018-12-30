@@ -1,0 +1,2 @@
+my_source: /etc/ansible/file1.txt
+my_dest: /home/demouser
