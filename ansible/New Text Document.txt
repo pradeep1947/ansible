@@ -1,0 +1,6 @@
+Ansible
+https://www.ansible.com/resources/videos/quick-start-video
+
+Ansible galaxy
+https://galaxy.ansible.com/home
+
